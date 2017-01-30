@@ -19,32 +19,58 @@ public class TicTacToeModel {
             xTurn = true;
     }
 
+    
+
     public char findWinner()
     {
         char myMark = 'E';
         for (int h=0;h<3;h++)
         {
-            if (Board[h][0] == Board[h][1] && Board[h][1] == Board[h][2] ||
-            Board[0][h] == Board[1][h] && Board[1][h] == Board[2][h])
-           
+            for (int w=0;w<3;w++)
             {
-                myMark = Board[h][h];
+                 if (Board[h][0] == Board[h][1] && Board[h][1] == Board[h][2])
+            {
+                    myMark = Board[h][0];
             }
-
+            else if (Board[0][h] == Board[1][h] && Board[1][h] == Board[2][h])
+            {
+                 myMark = Board[0][h];
+                
+            }
+            
+           else if (  Board[0][0] == Board[1][1] && Board[1][1] == Board[2][2])
+            {
+                myMark = Board[0][0];
+            }
+            else if( Board[0][2] == Board[1][1] && Board[1][1] == Board[2][0])
+            {
+               myMark = Board[0][2];
+            }
+            }
+            
+            
+           
         }
+        
         return myMark;
+        
+        
     }
+    
+    
 
-    public boolean isEmpty()
+    public char isEmpty()
     {
+        char empt = 'E'; 
         for (int h=0;h<3;h++)
             for (int w=0;w<3;w++)
             {
                 if (Board[h][w] != 'E')
-                    return false;
+                    empt = Board[h][w];
             }
-            return true;
+            return empt;
     }
+
 
     public void setMarker (int h, int w)
     {
